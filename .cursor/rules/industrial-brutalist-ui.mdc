@@ -1,0 +1,57 @@
+---
+description: Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics — rigid grids, extreme type-scale contrast, utilitarian color, analog degradation effects. Apply when the user wants a brutalist, industrial, tactical, telemetry, or blueprint-style UI for data-heavy dashboards, portfolios, or editorial sites.
+globs:
+alwaysApply: false
+---
+
+# Industrial Brutalism & Tactical Telemetry UI
+
+Architect interfaces synthesizing mid-century Swiss typography, industrial manufacturing manuals, and retro-futuristic aerospace/military terminals. Master rigid modular grids, extreme typographic scale contrast, purely utilitarian palettes, and programmatic analog degradation (halftones, scanlines, dithering). Project raw functionality and mechanical precision; deliberately discard consumer UI patterns.
+
+## Pick one archetype and commit
+
+Do not alternate or mix both within one interface.
+
+**Swiss Industrial Print** — from 1960s corporate identity and machinery blueprints. High-contrast light mode (newsprint/off-white), monolithic heavy sans-serif, structural grids with visible dividing lines, asymmetric negative space punctuated by viewport-bleeding numerals, primary red as alert/accent.
+
+**Tactical Telemetry / CRT Terminal** — from classified databases, mainframes, aerospace HUDs. Dark mode only, high-density tabular data, dominant monospace, technical framing (ASCII brackets, crosshairs), simulated hardware limits (phosphor glow, scanlines, low bit-depth).
+
+## Typographic architecture
+
+Typography is the primary structure; imagery is secondary.
+
+**Macro (headers):** Neo-grotesque/heavy sans — Neue Haas Grotesk Black, Inter Black, Archivo Black, Monument Extended. Massive fluid scale (`clamp(4rem, 10vw, 15rem)`), tight negative tracking (`-0.03em` to `-0.06em`), compressed leading (`0.85`–`0.95`), uppercase only.
+
+**Micro (data/telemetry):** Monospace — JetBrains Mono, IBM Plex Mono, Space Mono, VT323. Fixed small (`10–14px`), generous tracking (`0.05em`–`0.1em`), uppercase for all metadata, nav, unit IDs, coordinates.
+
+**Textural disruption:** High-contrast serif (Playfair, EB Garamond) used exceedingly sparingly, heavily post-processed (halftone, 1-bit dither) to degrade vector perfection.
+
+## Color system
+
+Gradients, soft shadows, modern translucency are prohibited. Choose ONE substrate per project; never mix light and dark.
+
+**Swiss Print (light):** bg `#F4F4F0`/`#EAE8E3` (matte paper), fg `#050505`–`#111111` (carbon ink), accent `#E61919`/`#FF2A2A` (hazard red — the only accent).
+
+**Tactical (dark):** bg `#0A0A0A`/`#121212` (avoid pure black), fg `#EAEAEA` (white phosphor), accent same hazard red. Terminal green `#4AF626` optional, for a single element only — never general text.
+
+## Layout & spatial engineering
+
+Mathematically engineered, rejecting conventional padding. Strict CSS Grid — elements anchor to tracks/intersections, never float. Visible compartmentalization via solid `1–2px` borders; full-width `<hr>` to segregate units. Bimodal density: tightly packed monospace clusters against vast negative space framing macro-type. Absolute rejection of `border-radius` — all corners 90°.
+
+## Components & symbology
+
+ASCII framing: `[ DELIVERY SYSTEMS ]`, `< RE-IND >`, directionals `>>>` `///`. Industrial markers (`®` `©` `™`) as geometric structure, not legal text. Crosshairs (`+`) at grid intersections, barcode lines, warning stripes, randomized strings (`REV 2.6`, `UNIT / D-01`).
+
+## Post-processing effects
+
+**Halftone/1-bit dither** via SVG radial dot patterns + `mix-blend-mode: multiply`. **CRT scanlines** via `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px)`. **Mechanical noise** — global low-opacity SVG grain on the DOM root.
+
+## Engineering directives
+
+1. `display: grid; gap: 1px;` with contrasting parent/child backgrounds for razor-thin dividers without border declarations.
+2. Semantic rigidity — `<data>`, `<samp>`, `<kbd>`, `<output>`, `<dl>` to reflect telemetry's technical nature.
+3. `clamp()` exclusively for macro-typography.
+
+---
+
+*Converted for Cursor from the `brutalist-skill` (frontmatter name `industrial-brutalist-ui`) in [hamzafarooq/claude-code-starter](https://github.com/hamzafarooq/claude-code-starter/tree/main/.claude/skills/brutalist-skill). Prose preserved verbatim.*
