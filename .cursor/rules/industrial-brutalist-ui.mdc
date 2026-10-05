@@ -1,57 +1,106 @@
 ---
-description: Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics — rigid grids, extreme type-scale contrast, utilitarian color, analog degradation effects. Apply when the user wants a brutalist, industrial, tactical, telemetry, or blueprint-style UI for data-heavy dashboards, portfolios, or editorial sites.
+description: Build industrial-brutalist, raw, high-energy web experiences — portfolio grids, creative-tool sites, sticker-book commerce. Apply when the user wants a brutalist, industrial, raw, or neo-brutalist frontend defined by visible structure, high-saturation blocking, and abrupt mechanical motion.
 globs:
 alwaysApply: false
 ---
 
-# Industrial Brutalism & Tactical Telemetry UI
+# Industrial / Brutalist Frontend Craftsmanship
 
-Architect interfaces synthesizing mid-century Swiss typography, industrial manufacturing manuals, and retro-futuristic aerospace/military terminals. Master rigid modular grids, extreme typographic scale contrast, purely utilitarian palettes, and programmatic analog degradation (halftones, scanlines, dithering). Project raw functionality and mechanical precision; deliberately discard consumer UI patterns.
+Brutalism is honesty executed with force. This pack speaks in ONE voice:
+raw grids, abrupt energy, exposed structure, mechanical confidence.
+(For cinematic restraint and slow editorial pacing, use the premium-luxury
+pack instead — never blend the two.)
 
-## Pick one archetype and commit
+## Identity
 
-Do not alternate or mix both within one interface.
+- Feeling in five seconds: loud, deliberate, built. The site shows its bones.
+- Structure IS the decoration. No ornament layered on top of it.
+- One loud device per page — a marquee, a sticker collage, an oversized
+  index — not five. Everything else is grid.
 
-**Swiss Industrial Print** — from 1960s corporate identity and machinery blueprints. High-contrast light mode (newsprint/off-white), monolithic heavy sans-serif, structural grids with visible dividing lines, asymmetric negative space punctuated by viewport-bleeding numerals, primary red as alert/accent.
+## Structural language
 
-**Tactical Telemetry / CRT Terminal** — from classified databases, mainframes, aerospace HUDs. Dark mode only, high-density tabular data, dominant monospace, technical framing (ASCII brackets, crosshairs), simulated hardware limits (phosphor glow, scanlines, low bit-depth).
+**Grid, visible.** The layout admits it is a grid: hard column rules,
+elements butted flush against edges and each other, no polite gutters
+hiding the seams. Masonry or strict columns — never cards floating in
+soft space.
 
-## Typographic architecture
+**Borders and shadows.** Thick 4px solid borders (black or ink) on all
+major elements. Hard offset shadows, 4–8px, zero blur — the shadow is a
+printed block, not a light source. Cards and badges may rotate -2deg/2deg
+for sticker energy; nothing else tilts.
 
-Typography is the primary structure; imagery is secondary.
+**Navigation.** Blunt: a bordered bar or an oversized index. Links are
+uppercase text or bordered blocks that press when hit. No hiding-on-
+scroll tricks — the nav is furniture, bolted down.
 
-**Macro (headers):** Neo-grotesque/heavy sans — Neue Haas Grotesk Black, Inter Black, Archivo Black, Monument Extended. Massive fluid scale (`clamp(4rem, 10vw, 15rem)`), tight negative tracking (`-0.03em` to `-0.06em`), compressed leading (`0.85`–`0.95`), uppercase only.
+## Motion language — GSAP + Lenis only
 
-**Micro (data/telemetry):** Monospace — JetBrains Mono, IBM Plex Mono, Space Mono, VT323. Fixed small (`10–14px`), generous tracking (`0.05em`–`0.1em`), uppercase for all metadata, nav, unit IDs, coordinates.
+GSAP (with ScrollTrigger — all plugins free) is the sole motion library
+across every framework. Do not introduce Framer Motion, CSS keyframe
+systems, or other animation libraries into a brutalist build.
 
-**Textural disruption:** High-contrast serif (Playfair, EB Garamond) used exceedingly sparingly, heavily post-processed (halftone, 1-bit dither) to degrade vector perfection.
+Named values (tune in sketchbook reps — they are the signature):
 
-## Color system
+- `press`: translateX/Y equal to the shadow offset, snapping flat on
+  release — the mechanical press. Every clickable does it.
+- `slam-in`: back.out(3) or steps-style snap, 0.25–0.4s — entrances land,
+  they do not drift in.
+- `ticker`: linear, looping — marquees only, pausable on hover/focus.
+- Stagger: 0.05s, strict order — a machine feeding parts, not a cascade.
 
-Gradients, soft shadows, modern translucency are prohibited. Choose ONE substrate per project; never mix light and dark.
+Rules:
+- Abrupt by design: spring or linear timing, short durations, hard cuts.
+  No slow fades, no eased drift, no parallax haze.
+- State changes still transition (150–300ms) — mechanical, never
+  instant-teleport, never mushy.
+- Borders and offset shadows may move; blur and glow never appear.
+- Reduced motion: `gsap.matchMedia()` with a calm variant — instant
+  states, no transforms, marquees stopped.
 
-**Swiss Print (light):** bg `#F4F4F0`/`#EAE8E3` (matte paper), fg `#050505`–`#111111` (carbon ink), accent `#E61919`/`#FF2A2A` (hazard red — the only accent).
+## Typography & color
 
-**Tactical (dark):** bg `#0A0A0A`/`#121212` (avoid pure black), fg `#EAEAEA` (white phosphor), accent same hazard red. Terminal green `#4AF626` optional, for a single element only — never general text.
+- Oversized grotesk or mono display set tight — `clamp()` up to ~10vw,
+  uppercase welcome; body 16px+ and unapologetically plain, 60–75ch.
+  Maximum 2 families.
+- High-saturation color blocking on a flat ground (cream/paper works):
+  2–3 loud hues + ink, all flat fills. Color shouts once per block; it
+  never murmurs everywhere.
+- No gradients, no texture overlays, no frosted glass. Surfaces are
+  paint, not atmosphere.
 
-## Layout & spatial engineering
+## Performance imperative
 
-Mathematically engineered, rejecting conventional padding. Strict CSS Grid — elements anchor to tracks/intersections, never float. Visible compartmentalization via solid `1–2px` borders; full-width `<hr>` to segregate units. Bimodal density: tightly packed monospace clusters against vast negative space framing macro-type. Absolute rejection of `border-radius` — all corners 90°.
+A loud site that stutters is just noise.
+- Composite only: animate `transform` and `opacity`. Never width, height,
+  top, or margin. The press effect is pure translate.
+- Zero layout shift from animation or hover — rotated elements reserve
+  their rotated bounding box.
+- Images flat and honest: AVIF/WebP, sized, lazy below fold.
 
-## Components & symbology
+## Accessibility floor
 
-ASCII framing: `[ DELIVERY SYSTEMS ]`, `< RE-IND >`, directionals `>>>` `///`. Industrial markers (`®` `©` `™`) as geometric structure, not legal text. Crosshairs (`+`) at grid intersections, barcode lines, warning stripes, randomized strings (`REV 2.6`, `UNIT / D-01`).
+Loud is not an excuse.
+- 4.5:1 contrast minimum, verified inside every color block — vivid
+  yellow with white text fails; test the actual pairs.
+- Visible focus states: a thick offset outline fits the voice — make
+  focus the loudest state, not the missing one.
+- Full keyboard paths — every press and marquee operable without a
+  pointer. `cursor: pointer` on all clickables.
 
-## Post-processing effects
+## Implementation ecosystem
 
-**Halftone/1-bit dither** via SVG radial dot patterns + `mix-blend-mode: multiply`. **CRT scanlines** via `repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px)`. **Mechanical noise** — global low-opacity SVG grain on the DOM root.
+- **React / Next.js:** `@gsap/react` (`useGSAP` for scoping/cleanup) +
+  `lenis` where smooth scroll serves the grid; native scroll is also
+  legitimate here — decide per project MASTER.md.
+- **Astro / vanilla:** GSAP timelines + `lenis` (npm package `lenis` —
+  the `@studio-freight/lenis` name is deprecated).
 
-## Engineering directives
+## Do not
 
-1. `display: grid; gap: 1px;` with contrasting parent/child backgrounds for razor-thin dividers without border declarations.
-2. Semantic rigidity — `<data>`, `<samp>`, `<kbd>`, `<output>`, `<dl>` to reflect telemetry's technical nature.
-3. `clamp()` exclusively for macro-typography.
-
----
-
-*Converted for Cursor from the `brutalist-skill` (frontmatter name `industrial-brutalist-ui`) in [hamzafarooq/claude-code-starter](https://github.com/hamzafarooq/claude-code-starter/tree/main/.claude/skills/brutalist-skill). Prose preserved verbatim.*
+- Corporate minimalism: quiet grays, hairline borders, whitespace-as-
+  statement.
+- Soft shadows, gradients, decorative blur, glassmorphism, glow.
+- Rounded-pill CTAs — corners are square or barely eased.
+- Emoji as icons; use SVG (Heroicons, Lucide) at consistent weight.
+- Layout shift from animation. Ever.
